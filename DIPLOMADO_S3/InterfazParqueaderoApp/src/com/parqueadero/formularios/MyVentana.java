@@ -13,6 +13,8 @@ import javax.swing.JSpinner;
 import javax.swing.JPasswordField;
 import javax.swing.JSlider;
 import javax.swing.JTree;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MyVentana extends JFrame {
 
@@ -52,9 +54,17 @@ public class MyVentana extends JFrame {
 		btnNewButton.setBounds(34, 32, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(265, 32, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnAbrirOtraVentana = new JButton("Abrir otra ventana");
+		btnAbrirOtraVentana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*OtraVentana otra = new OtraVentana();
+				otra.setVisible(true);*/
+				VetanaModal otra = new VetanaModal();
+				otra.setVisible(true);
+			}
+		});
+		btnAbrirOtraVentana.setBounds(265, 32, 132, 58);
+		contentPane.add(btnAbrirOtraVentana);
 		
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(148, 115, 30, 20);

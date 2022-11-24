@@ -14,6 +14,9 @@ public abstract class AVehiculo implements IVehiculo {
 	protected int numeroHoras;
 	protected int descuento;
 	
+	protected String placa;
+	protected boolean isPagado = false;
+	
 	
 	public float liquidar(float valorFactura) {
 		
@@ -58,6 +61,19 @@ public abstract class AVehiculo implements IVehiculo {
 			throw new FechaMasViejaException();
 		}
 		this.horaSalida = horaSalida;
+	}
+	public String getPlaca() {
+		return placa;
+	}
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public boolean isPagado() {
+		return isPagado;
+	}
+	public void setPagado(boolean isPagado) {
+		this.isPagado = isPagado;
 	}
 	
 	
