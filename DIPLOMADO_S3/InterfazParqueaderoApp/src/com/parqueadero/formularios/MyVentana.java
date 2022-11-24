@@ -60,7 +60,9 @@ public class MyVentana extends JFrame {
 				/*OtraVentana otra = new OtraVentana();
 				otra.setVisible(true);*/
 				VetanaModal otra = new VetanaModal();
+				otra.setModal(true);
 				otra.setVisible(true);
+				
 			}
 		});
 		btnAbrirOtraVentana.setBounds(265, 32, 132, 58);
