@@ -6,6 +6,7 @@ import com.parqueadero.dto.AVehiculo;
 import com.parqueadero.dto.Automovil;
 import com.parqueadero.dto.Campero;
 import com.parqueadero.dto.Moto;
+import com.parqueadero.exceptions.PlacaNoExisteException;
 
 public class ParqueaderoService {
 	
@@ -31,30 +32,37 @@ public class ParqueaderoService {
 			
 			DBUtil.DB_VEHICULOS.add(nuevaMoto);
 		} else if("AUTOMOVIL".equals(tipo.toUpperCase())) {
-			Automovil nuevaMoto = new Automovil();
-			nuevaMoto.setHoraEntrada(fechaEntrada);			
-			nuevaMoto.setPagado(false);
-			nuevaMoto.setPlaca(placa);
+			Automovil carro = new Automovil();
+			carro.setHoraEntrada(fechaEntrada);			
+			carro.setPagado(false);
+			carro.setPlaca(placa);
 			
-			DBUtil.DB_VEHICULOS.add(nuevaMoto);
-		} else if("Campero".equals(tipo.toUpperCase())) {
-			Campero nuevaMoto = new Campero();
-			nuevaMoto.setHoraEntrada(fechaEntrada);			
-			nuevaMoto.setPagado(false);
-			nuevaMoto.setPlaca(placa);
+			DBUtil.DB_VEHICULOS.add(carro);
+		} else if("CAMPERO".equals(tipo.toUpperCase())) {
+			Campero camp = new Campero();
+			camp.setHoraEntrada(fechaEntrada);			
+			camp.setPagado(false);
+			camp.setPlaca(placa);
 			
-			DBUtil.DB_VEHICULOS.add(nuevaMoto);
+			DBUtil.DB_VEHICULOS.add(camp);
+			
 		}
+		DBUtil.imprimirList();
 		
 	}
 	
 	
 	
+	
+	
+	
 	public float getLiquidacion(String placa, float valorFactura) throws Exception {
 		AVehiculo vehiculo = getVehiculoByPlaca(placa);
+		
 		if(vehiculo == null) {
-			///excepciones
+			throw new PlacaNoExisteException();
 		}
+		
 		vehiculo.setHoraSalida(new Date());
 		return vehiculo.liquidar(valorFactura);		
 	}
@@ -66,7 +74,10 @@ public class ParqueaderoService {
 	
 	
 	private AVehiculo getVehiculoByPlaca(String placa) {
-		return DBUtil.DB_VEHICULOS.stream().filter(x-> x.getPlaca().equals(placa) && !x.isPagado()).findFirst().get();
+		AVehiculo elBuscado = DBUtil.DB_VEHICULOS
+				.stream().filter( x -> x.getPlaca().equals(placa) && !x.isPagado()
+						).findFirst().get();
+		return elBuscado;
 	}
 
 }
