@@ -10,7 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.parqueadero.service.ParqueaderoService;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 public class BienvenidaFrame extends JFrame {
+
 
 	private JPanel contentPane;
 
@@ -34,6 +40,14 @@ public class BienvenidaFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public BienvenidaFrame() {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_F12) {
+					
+				}
+			}
+		});
 		setResizable(false);
 		setTitle("Bienvenida");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Programas\\cmder\\vendor\\git-for-windows\\usr\\share\\git\\git-for-windows.ico"));
@@ -56,8 +70,24 @@ public class BienvenidaFrame extends JFrame {
 		contentPane.add(btnEntrada);
 		
 		JButton btnSalida = new JButton("Salida");
+		btnSalida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SalidaDialog salida = new SalidaDialog();
+				salida.setVisible(true);
+			}
+		});
 		btnSalida.setBounds(165, 45, 123, 159);
 		contentPane.add(btnSalida);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ParqueaderoService servicio = new ParqueaderoService();
+				servicio.envejecer();
+			}
+		});
+		btnNewButton.setBounds(296, 11, 23, 23);
+		contentPane.add(btnNewButton);
 	}
 
 }

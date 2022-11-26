@@ -17,7 +17,9 @@ public class ParqueaderoService {
 	public String[] getTipoVehiculos() {		
 		return ParqueaderoService.TIPO_VEHICULOS;
 	}
-	
+	public void envejecer() {
+		DBUtil.envejecer();
+	}
 	public void guardarVehiculo(String tipo, String placa, int nueroCascos) {
 		
 		Date  fechaEntrada = new Date();

@@ -31,6 +31,9 @@ public class Moto extends AVehiculo{
 		return valorPagar;
 	}
 	
+	public String toString() {
+		return super.toString() + " - cascos guardar " + cascosGuarda;
+	}
 	
 	public int getCascosGuarda() {
 		return cascosGuarda;

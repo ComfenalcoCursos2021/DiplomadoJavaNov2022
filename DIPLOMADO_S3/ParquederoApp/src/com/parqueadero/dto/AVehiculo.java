@@ -31,7 +31,9 @@ public abstract class AVehiculo implements IVehiculo {
 		return liquidacion - (liquidacion*this.descuento/100);
 	}
 	
-	
+	public String toString() {
+		return this.getClass().getSimpleName() + " " + (this.isPagado == true ?  "Ya esta pago" : "Pendiente" ) + " - Placa - " + this.placa + " - Hora Entrada " + this.horaEntrada;
+	}
 
 	private int obtenerDescuento(float valorFactura) {
 		int descuento = 0;
