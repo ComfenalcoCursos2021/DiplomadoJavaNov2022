@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NuevoReporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0139f284-38cb-4e49-b3db-38606ae94b1d">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="code" class="java.lang.String">
+		<fieldDescription><![CDATA[code]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[valor]]></fieldDescription>
+	</field>
+	<field name="url" class="java.lang.String">
+		<fieldDescription><![CDATA[url]]></fieldDescription>
+	</field>
+	<variable name="SumaValor" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="SumarColumnaValor" class="java.lang.Double" calculation="Sum">
+		<variableDescription><![CDATA[La suma de la columna VALOR]]></variableDescription>
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="229f0777-e9b0-4103-b562-0d0b3d074f2d"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="100" height="20" uuid="a1ca79da-1a96-4c28-9287-0b85ef85568c"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="20" uuid="4d0bced8-5718-4f97-b619-d55b6b826fdb"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="100" height="20" uuid="16ef9d7b-180d-4a2a-854b-aa9ff350c4a1"/>
+				<textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="250" y="15" width="81" height="21" uuid="a994ea2b-2a9c-4ce3-a55b-fb2ccef1a9d2"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="470" y="0" width="81" height="21" uuid="55e9c717-1d0f-4bcf-9b9a-ee3bef76ecb6"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="240" y="6" width="100" height="30" uuid="d94adb30-6141-4b6e-8cf5-c8f063e080f9"/>
+				<textFieldExpression><![CDATA[$V{SumarColumnaValor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

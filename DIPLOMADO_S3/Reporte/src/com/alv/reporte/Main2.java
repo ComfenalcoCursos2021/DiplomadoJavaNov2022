@@ -1,5 +1,6 @@
 package com.alv.reporte;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -7,17 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.alv.dto.Country;
+import com.alv.dto.ReporteSource;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRLoader;
 
-public class Main {
+public class Main2 {
 
 	private static String destFileName = "report.pdf";
 	
@@ -44,12 +46,9 @@ public class Main {
 	}
 	private static JasperReport getJasperReport() throws FileNotFoundException, JRException {
         //File template = new File("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\MiReporte.jrxml"); //ResourceUtils.getFile("classpath:report.jrxml");
-        //File template = new File("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\NuevoReporte.jrxml"); //ResourceUtils.getFile("classpath:report.jrxml");
-        
-		//File template = new File("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\20221128.jrxml"); //ResourceUtils.getFile("classpath:report.jrxml");
-        //return JasperCompileManager.compileReport(template.getAbsolutePath());
-        
-		return (JasperReport) JRLoader.loadObjectFromFile("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\20221128.jasper"); 
+        File template = new File("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\ReporteCompleto.jrxml"); //ResourceUtils.getFile("classpath:report.jrxml");
+        return JasperCompileManager.compileReport(template.getAbsolutePath());
+        //return (JasperReport) JRLoader.loadObjectFromFile("D:\\WORKSPACE\\WORKSPACE_JAVA\\DIPLOMADO\\DIPLOMADO_S3\\Reporte\\src\\com\\alv\\recursos\\MiReporte.jasper"); 
         
     }
     private static Map<String, Object> getParameters(){
@@ -76,7 +75,7 @@ public class Main {
         countries.add(new Country("DE", "Germany", "https://i.pinimg.com/originals/af/c9/b2/afc9b2592a9f1cf591e8a52256ae1e9f.png"));
         countries.add(new Country("BR", "Brazil", "https://i.pinimg.com/originals/e4/03/c4/e403c4447a3bd8940459ae4f50856bed.png"));
         // 9 other countries in GITHUB
-
+        
         return new JRBeanCollectionDataSource(countries);
     }
 
