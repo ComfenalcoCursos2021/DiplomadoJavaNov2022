@@ -24,6 +24,11 @@ public class PersonaController {
 		return personaDao.findAll();
 	}
 	
+	@GetMapping("obtenerPrimero")
+	public Persona primero() {
+		return personaDao.findAll().get(0);
+	}
+	
 	@PostMapping("guardar")
 	public Persona guardar(@RequestBody Persona persona) {
 		Persona aux = new Persona();
