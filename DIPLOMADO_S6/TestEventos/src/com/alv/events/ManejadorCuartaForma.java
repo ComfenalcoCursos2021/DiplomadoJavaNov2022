@@ -54,10 +54,8 @@ public class ManejadorCuartaForma implements ActionListener, KeyListener, MouseM
 		if(e.getSource().equals(cuarta.getTxtIngresador())) {
 			//if(e.getKeyCode() == 10) {
 				cuarta.getLblMensajeCargado().setText(cuarta.getTxtIngresador().getText());					
-			//}
-			
-		}
-		
+			//}			
+		}		
 		System.out.println(e.getKeyCode());
 		
 	}
